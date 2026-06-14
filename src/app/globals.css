@@ -1,0 +1,296 @@
+/* Font imports from Fontshare CDN */
+@import url('https://api.fontshare.com/v2/css?f[]=zodiak@400,500,700,400i&f[]=sentient@400,500,700&display=swap');
+
+/* JetBrains Mono for monospace */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@import "tailwindcss";
+
+/* ============================================
+   CSS Custom Properties — Color System
+   ============================================ */
+:root {
+  /* Primary — Warm amber/gold */
+  --color-primary: #D4A017;
+  --color-primary-light: #E8C547;
+  --color-primary-dark: #B8860B;
+  --color-primary-hsl: 43, 78%, 47%;
+
+  /* Secondary — Deep charcoal */
+  --color-secondary: #2D2D2D;
+  --color-secondary-light: #3D3D3D;
+
+  /* Accent — Muted sage/teal */
+  --color-accent: #5F8D7E;
+  --color-accent-light: #7BA898;
+  --color-accent-dark: #4A6B5F;
+
+  /* Background & surfaces */
+  --color-background: #F5F0E8;
+  --color-background-alt: #EDE6D6;
+  --color-surface: #FFFFFF;
+  --color-surface-dark: #363636;
+
+  /* Text */
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #7A7A7A;
+  --color-text-inverse: #F5F0E8;
+  --color-text-inverse-muted: #B8B0A0;
+
+  /* Semantic */
+  --color-success: #5B8C5A;
+  --color-success-light: #7AAF78;
+  --color-success-muted: #E8F0E8;
+  --color-warning: #C78D3A;
+  --color-warning-light: #E0A84F;
+  --color-warning-muted: #F5E8D6;
+  --color-error: #B85450;
+  --color-error-light: #D4736F;
+  --color-error-muted: #F5E0DE;
+  --color-info: #6B8FA8;
+
+  /* Grain overlay */
+  --grain-opacity: 0.08;
+
+  /* Shadow warmth */
+  --shadow-warmth: 25, 40%, 40%;
+
+  /* Transitions */
+  --transition-micro: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-slow: 500ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  --transition-bounce: 600ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* shadcn UI theme tokens */
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --primary-hsl: 43 78% 47%;
+  --primary-foreground: 60 9.1% 97.8%;
+  --secondary-hsl: 0 0% 17.8%;
+  --secondary-foreground: 60 9.1% 97.8%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --accent-hsl: 157 19% 46%;
+  --accent-foreground: 60 9.1% 97.8%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --ring: 43 78% 47%;
+  --radius: 0.5rem;
+}
+
+/* ============================================
+   Dark Mode Overrides
+   ============================================ */
+.dark {
+  --color-background: #1E1E1E;
+  --color-background-alt: #252220;
+  --color-surface: #2A2A2A;
+  --color-surface-dark: #363636;
+
+  --color-text-primary: #E8E0D4;
+  --color-text-secondary: #B8B0A0;
+  --color-text-muted: #7A7A6A;
+  --color-text-inverse: #1A1A1A;
+  --color-text-inverse-muted: #4A4A4A;
+
+  --color-primary: #E8C547;
+  --color-primary-light: #F0D878;
+  --color-primary-dark: #D4A017;
+
+  --color-accent: #7BA898;
+  --color-accent-light: #9BC4B4;
+  --color-accent-dark: #5F8D7E;
+
+  --grain-opacity: 0.05;
+  --shadow-warmth: 30, 20%, 20%;
+}
+
+/* ============================================
+   Tailwind v4 Theme Configuration
+   ============================================ */
+@theme inline {
+  /* Font families */
+  --font-heading: 'Zodiak', Georgia, 'Times New Roman', serif;
+  --font-body: 'Sentient', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', Consolas, Monaco, monospace;
+
+  /* Colors mapped to custom properties */
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-primary-dark: var(--color-primary-dark);
+  --color-secondary: var(--color-secondary);
+  --color-secondary-light: var(--color-secondary-light);
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-background: var(--color-background);
+  --color-background-alt: var(--color-background-alt);
+  --color-surface: var(--color-surface);
+  --color-surface-dark: var(--color-surface-dark);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-inverse: var(--color-text-inverse);
+  --color-text-inverse-muted: var(--color-text-inverse-muted);
+  --color-success: var(--color-success);
+  --color-success-light: var(--color-success-light);
+  --color-success-muted: var(--color-success-muted);
+  --color-warning: var(--color-warning);
+  --color-warning-light: var(--color-warning-light);
+  --color-warning-muted: var(--color-warning-muted);
+  --color-error: var(--color-error);
+  --color-error-light: var(--color-error-light);
+  --color-error-muted: var(--color-error-muted);
+  --color-info: var(--color-info);
+
+  /* Custom spacing tokens */
+  --spacing-px: 1px;
+  --spacing-0: 0;
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  --spacing-16: 4rem;
+  --spacing-20: 5rem;
+  --spacing-24: 6rem;
+  --spacing-32: 8rem;
+  --spacing-40: 10rem;
+  --spacing-48: 12rem;
+
+  /* Custom max-widths */
+  --max-width-container-sm: 640px;
+  --max-width-container-md: 768px;
+  --max-width-container-lg: 1024px;
+  --max-width-container-xl: 1280px;
+  --max-width-container-2xl: 1440px;
+
+  /* Custom shadows with warm tint */
+  --shadow-sm: 0 1px 2px hsla(43, 40%, 40%, 0.08);
+  --shadow-md: 0 4px 6px -1px hsla(43, 40%, 40%, 0.1), 0 2px 4px -2px hsla(43, 40%, 40%, 0.06);
+  --shadow-lg: 0 10px 15px -3px hsla(43, 40%, 40%, 0.12), 0 4px 6px -4px hsla(43, 40%, 40%, 0.08);
+  --shadow-xl: 0 20px 25px -5px hsla(43, 40%, 40%, 0.14), 0 8px 10px -6px hsla(43, 40%, 40%, 0.1);
+  --shadow-2xl: 0 25px 50px -12px hsla(43, 40%, 40%, 0.2);
+  --shadow-inner: inset 0 2px 4px hsla(43, 40%, 40%, 0.06);
+  --shadow-glow: 0 0 20px hsla(43, 78%, 47%, 0.3);
+  --shadow-glow-accent: 0 0 20px hsla(157, 19%, 46%, 0.3);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+/* ============================================
+   Grain Texture Overlay
+   ============================================ */
+.grain-overlay {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: var(--grain-opacity, 0.08);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ============================================
+   Focus Styles — Warm amber, never blue
+   ============================================ */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px hsla(43, 78%, 47%, 0.5);
+  border-radius: 4px;
+}
+
+.dark :focus-visible {
+  box-shadow: 0 0 0 3px hsla(43, 78%, 47%, 0.6);
+}
+
+/* ============================================
+   Skip Link for Accessibility
+   ============================================ */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  padding: 8px 16px;
+  z-index: 10000;
+  transition: top 0.2s;
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .grain-animated {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   Typography Utilities
+   ============================================ */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ============================================
+   Selection Color
+   ============================================ */
+::selection {
+  background-color: hsla(43, 78%, 47%, 0.25);
+  color: var(--color-text-primary);
+}
