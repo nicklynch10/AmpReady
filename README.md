@@ -1,224 +1,204 @@
-# AmpReady Website
+# AmpReady
 
-A production-ready, SEO-optimized website for AmpReady — the AI-qualified job engine for residential EV charger installation.
+> **AI-qualified job engine for residential EV charger installation.**
+>
+> AmpReady turns messy homeowner project details into contractor-ready job packets — helping homeowners get faster, cleaner quotes and electricians get better project information.
 
-## 🚀 Live Site
+---
 
-**URL**: https://ampready.com (placeholder — deploy to your domain)
-
-## 📁 Pages (20 Routes)
-
-| Route | Description | SEO Target |
-|-------|-------------|------------|
-| `/` | Homepage — Hero, value prop, testimonials, FAQ | Primary landing page |
-| `/homeowners` | For Homeowners — Intake process, pricing, benefits | "EV charger installation quote" |
-| `/electricians` | For Electricians — Job packets, pricing, benefits | "EV charger leads for electricians" |
-| `/how-it-works` | How It Works — Process for both sides | "How AmpReady works" |
-| `/about` | About — Mission, story, team, vision | Brand + trust building |
-| `/blog` | Blog Index — Guides, resources, SEO content | Content hub |
-| `/blog/[slug]` | Blog Posts (6 sample posts) | Long-tail SEO keywords |
-| `/contact` | Contact — Form, email, phone, FAQ | Support + leads |
-| `/get-started` | Get Started — 3-step intake form | Primary conversion |
-| `/privacy` | Privacy Policy | Legal compliance |
-| `/terms` | Terms of Service | Legal compliance |
-| `/sitemap.xml` | Sitemap | SEO indexing |
-
-## 🎨 Design System (Anti-AI)
-
-### Philosophy
-This website is intentionally designed to **not look AI-generated**. Every design decision prioritizes human curation, organic imperfection, and tactile warmth over algorithmic perfection.
-
-### Colors (Warm, Discovered)
-- **Primary**: Warm amber `#D4A017` — sunlight, not corporate blue
-- **Secondary**: Deep charcoal `#2D2D2D` — warm dark, not pure black
-- **Accent**: Muted sage `#5F8D7E` — trust and sustainability
-- **Background**: Warm cream `#F5F0E8` — paper-like, not sterile white
-- **Text**: Warm dark gray `#1A1A1A` — readable without harsh contrast
-
-### Typography (Editorial)
-- **Headings**: Zodiak (serif) from Fontshare — sharp, confident, print-journalism feel
-- **Body**: Sentient (sans) from Fontshare — warm and readable
-- **Monospace**: JetBrains Mono — for code/data
-
-### Texture & Effects
-- **Grain overlay**: SVG `feTurbulence` at 8% opacity across all pages
-- **Organic shapes**: Blob generators with irregular border-radius
-- **Shadows**: Warm-tinted (`hsla(43, 40%, 40%, ...)`)
-- **Borders**: Subtle, warm-tinted
-
-### Animation (Physics-Based)
-- **Library**: Motion.dev (Framer Motion v12)
-- **Philosophy**: Spring physics, not tweened animations
-- **Configs**: microSpring, feedbackSpring, layoutSpring, pageSpring, heroSpring, bounceSpring, floatSpring
-- **Effects**: Scroll-triggered entrances, physics-based hover states, staggered reveals
-
-### Anti-AI Checklist
-- [x] No perfect symmetry — asymmetric layouts throughout
-- [x] No perfect circles — organic blob shapes
-- [x] No generic stock imagery — CSS-generated visuals, real testimonial names
-- [x] No system fonts — Zodiak + Sentient editorial fonts
-- [x] No glassmorphism — tactile grain textures
-- [x] No tweened animations — spring physics only
-- [x] No pure white/black — warm cream and charcoal
-- [x] Slight imperfections — 0.5-1° rotations on cards
-- [x] Intentional asymmetry — broken grid in hero, offset elements
-
-## 🔍 SEO Strategy
-
-### Keywords Targeted
-- **Commercial**: "EV charger installation quote", "home EV charger installer", "Level 2 charger installation"
-- **Informational**: "how much does EV charger installation cost", "do I need panel upgrade for EV charger"
-- **Local**: "[city] EV charger installation" (template for future expansion)
-- **B2B**: "EV charger leads for electricians", "residential electrical job packets"
-
-### Technical SEO
-- Meta tags on every page (title, description, keywords)
-- Open Graph and Twitter Cards
-- Canonical URLs
-- Schema.org structured data:
-  - `LocalBusiness` + `WebSite` (homepage)
-  - `Service` (homeowners, electricians)
-  - `HowTo` (how-it-works)
-  - `FAQPage` (FAQ sections)
-  - `Article` (blog posts)
-  - `Organization` (about)
-  - `ContactPage` (contact)
-- Sitemap.xml with all routes
-- robots.txt
-
-### Content (6 Blog Posts)
-1. "How Much Does EV Charger Installation Cost in 2026?"
-2. "Do You Need a Panel Upgrade for Your EV Charger?"
-3. "Level 1 vs Level 2 vs Level 3 Charging"
-4. "How to Prepare for Your EV Charger Installation"
-5. "EV Charger Installation Leads: A Guide for Electricians"
-6. "Understanding EV Charger Permits and Inspections"
-
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 15 (App Router)
-- **React**: 19
-- **TypeScript**: 5
-- **Styling**: Tailwind CSS v4
-- **UI Components**: shadcn/ui
-- **Animation**: Motion.dev (Framer Motion v12)
-- **Icons**: Lucide React
-- **Fonts**: Fontshare CDN (Zodiak, Sentient) + Google Fonts (JetBrains Mono)
-- **SEO**: next-seo, next-sitemap
-
-## 📂 Project Structure
+## 🏗️ Architecture Overview
 
 ```
-ampready-site/
-├── src/
-│   ├── app/                    # Next.js App Router pages
-│   │   ├── page.tsx            # Homepage
-│   │   ├── layout.tsx          # Root layout (nav, footer, grain, SEO)
-│   │   ├── globals.css         # Design system (colors, fonts, grain, shadows)
-│   │   ├── sitemap.ts          # Programmatic sitemap
-│   │   ├── homeowners/         # For Homeowners page
-│   │   ├── electricians/       # For Electricians page
-│   │   ├── how-it-works/       # How It Works page
-│   │   ├── about/              # About page
-│   │   ├── contact/            # Contact page
-│   │   ├── blog/               # Blog index + posts
-│   │   ├── get-started/        # Intake form
-│   │   ├── privacy/            # Privacy Policy
-│   │   └── terms/              # Terms of Service
-│   ├── components/             # Reusable components
-│   │   ├── ui/                 # shadcn/ui components
-│   │   ├── SectionHeader.tsx
-│   │   ├── FeatureCard.tsx
-│   │   ├── TestimonialCard.tsx
-│   │   ├── FAQAccordion.tsx
-│   │   ├── CTASection.tsx
-│   │   ├── BlobShape.tsx
-│   │   ├── TimelineStep.tsx
-│   │   └── JobPacketPreview.tsx
-│   ├── lib/                    # Utilities
-│   │   ├── animations.ts       # Motion.dev spring configs
-│   │   ├── hooks.ts            # Custom React hooks
-│   │   └── utils.ts            # cn() helper
-│   └── types/                  # TypeScript types
-├── public/                     # Static assets
-│   └── robots.txt
-├── next.config.ts
-├── package.json
-└── tsconfig.json
+AmpReady/
+├── apps/
+│   ├── web/                    # Next.js 15 marketing website
+│   │   ├── src/app/            # Pages (homepage, homeowners, electricians, etc.)
+│   │   ├── src/components/     # Reusable UI components
+│   │   ├── src/lib/            # Utilities, animations, hooks
+│   │   └── public/             # Static assets
+│   └── api/                    # FastAPI backend (future)
+│       ├── src/
+│       │   ├── routes/         # API endpoints
+│       │   ├── models/         # Pydantic + SQLAlchemy models
+│       │   ├── services/       # Business logic
+│       │   └── db/             # Database migrations
+│       └── tests/
+├── docs/                       # Project documentation
+│   ├── architecture.md         # System architecture
+│   ├── design-system.md        # Visual design system
+│   ├── seo-strategy.md         # SEO and content strategy
+│   ├── api-spec.md             # API specification (future)
+│   └── deployment.md           # Deployment guide
+├── packages/
+│   └── shared/                 # Shared types, utilities (future)
+└── README.md                   # This file
 ```
 
-## 🚀 Deployment
+---
 
-### Static Export (Recommended)
+## 🚀 Quick Start
 
-The site is configured for static export, which works great with:
-- **Vercel** (zero-config, automatic)
-- **Netlify** (drag-and-drop or Git integration)
-- **Cloudflare Pages** (Git integration)
-- **AWS S3 + CloudFront** (manual or CI/CD)
-- **GitHub Pages** (for testing)
+### Prerequisites
+- Node.js 20+ (for web)
+- Python 3.11+ (for backend, future)
+- PostgreSQL 15+ (for database, future)
+
+### Web (Next.js)
 
 ```bash
-# Build for static export
-npm run build
-
-# The output is in the `out/` directory
-# Deploy the `out/` directory to your hosting provider
-```
-
-### Environment Variables
-
-```bash
-# For static export
-STATIC_EXPORT=true
-
-# For dynamic rendering (if you add API routes later)
-# Leave STATIC_EXPORT unset or set to false
-```
-
-### Post-Deployment Checklist
-
-- [ ] Replace `your-google-verification-code` in `layout.tsx` with actual Google Search Console code
-- [ ] Add `/og-image.jpg` to the `public/` folder (1200x630px, optimized)
-- [ ] Add `/logo.png` to the `public/` folder (for schema.org)
-- [ ] Set up Google Analytics 4
-- [ ] Set up Google Search Console
-- [ ] Configure custom domain in hosting provider
-- [ ] Test all internal links
-- [ ] Test responsive design on mobile, tablet, desktop
-- [ ] Test form submissions (connect to backend API)
-- [ ] Verify schema.org structured data with Google's Rich Results Test
-- [ ] Run Lighthouse audit (target: 90+ on all metrics)
-
-## 📝 Development
-
-```bash
-# Install dependencies
+cd apps/web
 npm install
-
-# Start development server
 npm run dev
-
-# Build for production
-npm run build
-
-# Start production server (after build)
-npm start
-
-# Run linting
-npm run lint
+# Open http://localhost:3000
 ```
 
-## 🎯 Next Steps (App Development)
+### Backend (FastAPI — Future)
 
-This website is the **marketing layer** for AmpReady. The **application layer** (backend + dynamic features) will include:
+```bash
+cd apps/api
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+uvicorn src.main:app --reload
+# Open http://localhost:8000/docs
+```
 
+---
+
+## 📦 Monorepo Structure
+
+| Directory | Purpose | Status |
+|-----------|---------|--------|
+| `apps/web/` | Next.js 15 marketing website | ✅ Production-ready |
+| `apps/api/` | FastAPI backend | 🔮 Planned |
+| `docs/` | Architecture, design, deployment docs | ✅ In progress |
+| `packages/shared/` | Shared types and utilities | 🔮 Planned |
+
+---
+
+## 🎯 Product Vision
+
+### Current: Website (Marketing Layer)
+- SEO-optimized landing pages for homeowners and electricians
+- 3-step intake form for homeowners
+- Blog with EV charger guides
+- Contact form and lead capture
+
+### Next: Application Layer (Backend + Dynamic Features)
 1. **Intake API** — Process form submissions, store project data
 2. **Job Packet Generator** — AI-powered summarization of intake data
 3. **Contractor Portal** — Dashboard for electricians to review packets
 4. **Lead Routing** — Match homeowners with qualified local electricians
 5. **Payment System** — Per-lead billing for electricians
 6. **Admin Panel** — Lead management, contractor verification, analytics
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend (Web)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| Next.js | 15 | React framework, App Router |
+| React | 19 | UI library |
+| TypeScript | 5 | Type safety |
+| Tailwind CSS | v4 | Utility-first CSS |
+| shadcn/ui | latest | UI component primitives |
+| Motion.dev | v12 | Physics-based animations |
+| Lucide React | latest | Icons |
+
+### Backend (API — Planned)
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| FastAPI | latest | Python web framework |
+| Pydantic | v2 | Data validation |
+| SQLAlchemy | 2.0 | ORM |
+| asyncpg | latest | Async PostgreSQL driver |
+| Alembic | latest | Database migrations |
+| OpenAI/Anthropic | API | AI summarization |
+| WeasyPrint | latest | PDF generation |
+
+### Infrastructure
+| Technology | Purpose |
+|------------|---------|
+| Vercel | Frontend hosting |
+| Railway / Render | Backend hosting |
+| PostgreSQL | Primary database |
+| S3-compatible | Photo storage |
+| Resend / Postmark | Email delivery |
+
+---
+
+## 🎨 Design Philosophy
+
+**Anti-AI Design**: The website is intentionally crafted to feel human, not algorithmic.
+
+- Warm, discovered color palette (not algorithmic blue/purple)
+- Editorial typography (Zodiak + Sentient from Fontshare)
+- Grain texture overlay via SVG `feTurbulence`
+- Physics-based spring animations (not tweened)
+- Intentional asymmetry and organic blob shapes
+- Real-world language, not marketing speak
+
+See [`docs/design-system.md`](docs/design-system.md) for the full specification.
+
+---
+
+## 🔍 SEO Strategy
+
+- 50+ targeted keywords across commercial, informational, local, and B2B intent
+- 6 blog posts with long-tail keyword targeting
+- Schema.org structured data on every page
+- Sitemap.xml and robots.txt
+- Local SEO template for 50+ metro areas (future)
+
+See [`docs/seo-strategy.md`](docs/seo-strategy.md) for the full strategy.
+
+---
+
+## 📋 Development Workflow
+
+### Branch Strategy
+- `main` — Production-ready code
+- `develop` — Integration branch
+- `feature/*` — Feature branches
+- `hotfix/*` — Emergency fixes
+
+### Commit Convention
+```
+type(scope): subject
+
+body (optional)
+
+footer (optional)
+```
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+### Code Review
+- All PRs require review before merge
+- CI must pass (build, lint, type-check)
+- No direct pushes to `main`
+
+---
+
+## 🚀 Deployment
+
+### Web (Vercel)
+```bash
+cd apps/web
+vercel --prod
+```
+
+### API (Railway / Render)
+```bash
+cd apps/api
+railway up
+```
+
+See [`docs/deployment.md`](docs/deployment.md) for detailed instructions.
+
+---
 
 ## 📄 License
 
