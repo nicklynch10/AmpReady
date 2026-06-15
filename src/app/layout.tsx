@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import { MobileMenu } from "@/components/MobileMenu";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ampready.com"),
@@ -91,6 +92,11 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js-hydrated');`,
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col bg-background text-text-primary font-body">
         {/* Skip link for accessibility */}
@@ -134,6 +140,12 @@ export default function RootLayout({
                 How It Works
               </Link>
               <Link
+                href="/blog"
+                className="font-body text-base text-text-primary hover:text-primary transition-colors"
+              >
+                Blog
+              </Link>
+              <Link
                 href="/about"
                 className="font-body text-base text-text-primary hover:text-primary transition-colors"
               >
@@ -146,12 +158,15 @@ export default function RootLayout({
                 Contact
               </Link>
             </div>
-            <Link
-              href="/get-started"
-              className="hidden md:inline-flex items-center px-6 py-3 bg-primary text-text-inverse font-body font-medium rounded-lg shadow-md hover:bg-primary-light transition-colors"
-            >
-              Get Started
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/get-started"
+                className="hidden md:inline-flex items-center px-6 py-3 bg-primary text-text-inverse font-body font-medium rounded-lg shadow-md hover:bg-primary-light transition-colors"
+              >
+                Get Started
+              </Link>
+              <MobileMenu />
+            </div>
           </nav>
         </header>
 

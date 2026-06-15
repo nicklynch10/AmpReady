@@ -273,6 +273,35 @@ body {
 }
 
 /* ============================================
+   Scroll Animation Fallback — Content Visible by Default
+   ============================================ */
+
+/* Ensure animated elements are visible before JS hydrates */
+[data-animate],
+[data-animate] > * {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Once JS runs and adds the hydrated class, animations work normally */
+.js-hydrated [data-animate],
+.js-hydrated [data-animate] > * {
+  opacity: initial;
+  transform: initial;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate],
+  [data-animate] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ============================================
    Typography Utilities
    ============================================ */
 .font-heading {

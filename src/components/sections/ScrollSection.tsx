@@ -14,9 +14,10 @@ interface ScrollSectionProps {
 export function ScrollSection({ children, className, delay = 0 }: ScrollSectionProps) {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 30 }}
+      data-animate
+      initial={{ opacity: 0.01, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ ...pageSpring, delay }}
       className={cn(className)}
     >
@@ -49,7 +50,8 @@ export function ScrollFadeIn({
 
   return (
     <motion.div
-      initial={{ opacity: 0, ...offset }}
+      data-animate
+      initial={{ opacity: 0.01, ...offset }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ ...pageSpring, delay }}

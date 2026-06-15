@@ -139,7 +139,7 @@ function SectionWrapper({
       className={className}
       initial="initial"
       whileInView="whileInView"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-50px" }}
       variants={scrollFadeUp}
     >
       {children}

@@ -111,7 +111,7 @@ export const staggerItem: Variants = {
 // ============================================
 
 export const scrollFadeUp: Variants = {
-  initial: { opacity: 0, y: 30 },
+  initial: { opacity: 0.01, y: 30 },
   whileInView: {
     opacity: 1,
     y: 0,
@@ -120,7 +120,7 @@ export const scrollFadeUp: Variants = {
 };
 
 export const scrollScaleIn: Variants = {
-  initial: { opacity: 0, scale: 0.95 },
+  initial: { opacity: 0.01, scale: 0.95 },
   whileInView: {
     opacity: 1,
     scale: 1,

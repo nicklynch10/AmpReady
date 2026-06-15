@@ -10,7 +10,6 @@ interface FeatureCardProps {
   title: string;
   description: string;
   className?: string;
-  rotate?: number;
   index?: number;
 }
 
@@ -19,20 +18,24 @@ export function FeatureCard({
   title,
   description,
   className,
-  rotate = 0,
   index = 0,
 }: FeatureCardProps) {
+  // Alternating slight rotations for anti-AI feel
+  const rotate = index % 2 === 0 ? -0.5 : 0.5;
+
   return (
     <motion.div
+      data-animate
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ ...layoutSpring, delay: index * 0.08 }}
       style={{ transform: `rotate(${rotate}deg)` }}
-      className={cn("relative", className)}
+      className={cn("relative group", className)}
     >
       <motion.div
-        className="bg-surface rounded-2xl p-8 shadow-md border border-text-muted/10 relative overflow-hidden h-full"
+        className="bg-surface rounded-2xl p-8 shadow-md border border-text-muted/10 relative overflow-hidden h-full transition-transform duration-300 group-hover:rotate-0"
+        style={{ transform: "rotate(0deg)" }}
         {...cardHover}
       >
         {/* Organic blob accent */}

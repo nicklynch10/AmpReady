@@ -74,7 +74,7 @@ Most homeowners with 200A service and a standard garage setup should budget $800
     author: "AmpReady Team",
     publishedAt: "2026-01-15",
     updatedAt: "2026-06-01",
-    tags: ["cost", "installation", "budget", "homeowners"],
+    tags: ["Cost & Pricing", "Installation", "Budget", "For Homeowners"],
     readingTime: 6,
   },
   {
@@ -718,14 +718,12 @@ Permits and inspections are non-negotiable for EV charger installation. They pro
 
 export const blogCategories = [
   "All",
-  "cost",
-  "installation",
-  "electrical",
-  "buying guide",
-  "safety",
-  "regulations",
-  "homeowners",
-  "electricians",
+  "For Homeowners",
+  "For Electricians",
+  "Cost & Pricing",
+  "Panel Upgrades",
+  "Installation",
+  "Safety",
 ];
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {

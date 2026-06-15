@@ -12,7 +12,6 @@ interface TestimonialCardProps {
   company?: string;
   initials: string;
   color?: "primary" | "accent";
-  rotate?: number;
   index?: number;
   className?: string;
 }
@@ -24,7 +23,6 @@ export function TestimonialCard({
   company,
   initials,
   color = "primary",
-  rotate = 0,
   index = 0,
   className,
 }: TestimonialCardProps) {
@@ -33,17 +31,22 @@ export function TestimonialCard({
     accent: "bg-accent/20 text-accent",
   };
 
+  // Alternating slight rotations for anti-AI feel
+  const rotate = index % 2 === 0 ? -0.5 : 0.5;
+
   return (
     <motion.div
+      data-animate
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ ...layoutSpring, delay: index * 0.1 }}
       style={{ transform: `rotate(${rotate}deg)` }}
-      className={cn("relative", className)}
+      className={cn("relative group", className)}
     >
       <motion.div
-        className="bg-surface rounded-2xl p-8 shadow-md border border-text-muted/10 relative overflow-hidden h-full"
+        className="bg-surface rounded-2xl p-8 shadow-md border border-text-muted/10 relative overflow-hidden h-full transition-transform duration-300 group-hover:rotate-0"
+        style={{ transform: "rotate(0deg)" }}
         {...cardHover}
       >
         {/* Organic shape background */}
